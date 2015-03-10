@@ -1,0 +1,12 @@
+diff -Naur old/irkerd new/irkerd
+--- old/irkerd	2014-10-22 20:20:46.000000000 -0400
++++ new/irkerd	2015-03-06 15:24:40.381705830 -0500
+@@ -27,7 +27,7 @@
+ HOST = "localhost"
+ PORT = 6659
+ 
+-XMIT_TTL = (3 * 60 * 60)	# Time to live, seconds from last transmit
++XMIT_TTL = (24 * 60 * 60)	# Time to live, seconds from last transmit
+ PING_TTL = (15 * 60)		# Time to live, seconds from last PING
+ HANDSHAKE_TTL = 60		# Time to live, seconds from nick transmit
+ CHANNEL_TTL = (3 * 60 * 60)	# Time to live, seconds from last transmit

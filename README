@@ -1,0 +1,48 @@
+awbot-irk
+announce to IRC using irker
+
+this package is primarily for use by Arch Linux Women
+hence, it is designed for that
+(not irker, that is a separate project)
+
+package version reflects the version of irker
+
+Usage
+-----
+
+awbot msg...
+send one or more messages to irkerd
+
+awbot-irk [args...]
+start irkerd with nick specified in config
+(nick is not optional. call irkerd directly if not setting a nick.)
+args are passed to irkerd verbatim
+
+systemctl start awbot-irk
+systemctl enable awbot-irk
+
+Install
+-------
+
+dependencies: bash, jshon
+in addition to those of irker
+
+sed -i -e 's,^conf=.*$,conf=/etc/awbot-irk.conf,' awbot awbot-irk
+install -D -m0755 awbot $DESTDIR/usr/bin/awbot
+install -D -m0755 awbot-irk $DESTDIR/usr/bin/awbot-irk
+install -D -m0644 awbot-irk.conf $DESTDIR/etc/awbot-irk.conf
+
+build and install irker as usual
+
+Config
+------
+
+/etc/awbot-irk.conf
+sourced by above awbot command, not seen by irkerd directly
+
+nick - string
+pass - string
+channel - string
+server - string
+port - optional, string
+ssl - true or false

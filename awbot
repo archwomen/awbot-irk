@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# sed -i 's,^conf=.*$,conf=/etc/awbot-irk.conf,' awbot
+conf=./awbot-irk.conf
+
+if [[ -f "$conf" ]]
+then source "$conf"
+else echo "no config found: $conf"
+     exit 1
+fi
+
+# convert messages to a single JSON string
+msgs2str() {
+  jshon -Q -F /dev/null -s "$( # encode as JSON string
+    printf '%s\n' "$@" |   # put each arg on its own line
+    sed 's,.\{350\},&\n,g' # limit each line to 350 chars max
+  )"
+}
+
+printf '{"to":"irc%s://awbot%s@%s%s/%s", "privmsg":%s}\n' \
+   "$($ssl && echo s)" \
+   "${pass:+:$pass}" \
+   "$server" \
+   "${port:+:$port}" \
+   "$channel" \
+   "$(msgs2str "$@")" \
+> /dev/tcp/localhost/6659

@@ -1,0 +1,9 @@
+[Unit]
+Description=awbot running irkerd
+Requires=network.target
+
+[Service]
+ExecStart=/usr/bin/awbot-irk
+
+[Install]
+WantedBy=multi-user.target

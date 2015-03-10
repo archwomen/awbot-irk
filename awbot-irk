@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# sed -i 's,^conf=.*$,conf=/etc/awbot-irk.conf,' awbot
+conf=./awbot-irk.conf
+
+if [[ -f "$conf" ]]
+then source "$conf"
+else echo "no config found: $conf"
+     exit 1
+fi
+
+# nick config is not optional if calling this script
+exec irkerd -n "$nick" "$@"
