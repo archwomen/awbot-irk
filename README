@@ -1,9 +1,8 @@
 awbot-irk
 announce to IRC using irker
 
-this package is primarily for use by Arch Linux Women
-hence, it is designed for that
-(not irker, that is a separate project)
+this package is a fork of the AUR PKGBUILD with the additions of a patch, some scripts, and a systemd service to go with the scripts
+primarily for use by Arch Linux Women
 
 package version reflects the version of irker
 
